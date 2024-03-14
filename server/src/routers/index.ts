@@ -8,7 +8,7 @@ const router = Router()
 
 router.post('/', catchRoute(complaintPost))
 router.get('/by-institution/:institutionId', catchRoute(institutionSummary))
-router.get('/by-office/:id', catchRoute(complaintsByOffice))
+router.get('/by-office/:officeId', catchRoute(complaintsByOffice))
 
 
 async function complaintPost(req: any, res: any) {
@@ -85,8 +85,14 @@ async function institutionSummary(req:any,res:any){
 }
 
 async function complaintsByOffice(req:any,res:any){
-  // @TODO
-  // const complaints
+  const officeId = parseInt(req.params.officeId)
+  if(!officeId) {
+    res.status(400).send({success:false, message:"office id must be a number"})
+    return
+  }
+  const complaints = await getDb().collection('complaints').find({officeId}).toArray()
+
+  res.status(200).send({success:true, data: complaints})
 }
 
 export default router
