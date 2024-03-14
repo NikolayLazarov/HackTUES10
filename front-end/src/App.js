@@ -1,20 +1,32 @@
 import './App.css';
+import Navbar from './components/Navbar/Nabvar';
+import BestDataComponent from './components/Statistics/BestDataComponent';
+import WorstDataComponent from './components/Statistics/WorstDataComponent';
 
 function App() {
   return (
       <>
-        <div className="card w-96 bg-base-100 shadow-xl">
-        <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-        <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-        </div>
-</>
-    );
+          <nav>
+              <Navbar/>
+          </nav>
+        <article className='flex flex-row justify- '>
+              <section className=' flex flex-col'>
+                <WorstDataComponent/>
+                <WorstDataComponent/>
+
+              </section>
+              <section className=' flex flex-col'>
+                <BestDataComponent />                  
+              </section>
+              <section className=' flex flex-col'>
+                  <WorstDataComponent />
+                  <WorstDataComponent />
+              </section>
+
+        </article>
+          
+      </>
+  );
 }
 
 export default App;
