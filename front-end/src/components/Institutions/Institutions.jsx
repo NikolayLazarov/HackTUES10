@@ -1,6 +1,7 @@
 import React from 'react'
 import InstitutionAvatar from '../Avatars/InstitutionAvatar'
 import InputRange from '../InputRange/InputRange';
+import GraphicEmelement from '../GraphicsElement/GraphicEmelement';
 
 
 const newList = [0,1,2,3,4];
@@ -36,10 +37,9 @@ const Institutions = () => {
         <InstitutionAvatar /> 
         <InputRange currentValue={institution.averages[institution.mostRelevant]} />
         <p>{institution.mostRelevant}</p>
+        <GraphicEmelement mostRelevant={institution.historicalRating[institution.mostRelevant]}/>
     </li>
     );
-
-    const render1 = <p>balala</p>
   
     return (
     <>
