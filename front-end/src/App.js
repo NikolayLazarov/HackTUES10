@@ -1,4 +1,5 @@
 import './App.css';
+import Institutions from './components/Institutions/Institutions';
 import Navbar from './components/Navbar/Nabvar';
 import BestDataComponent from './components/Statistics/BestDataComponent';
 import WorstDataComponent from './components/Statistics/WorstDataComponent';
@@ -24,6 +25,10 @@ function App() {
               </section>
 
         </article>
+
+        <main className='institutions'>
+            <Institutions />
+        </main>
           
       </>
   );
