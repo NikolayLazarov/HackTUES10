@@ -173,8 +173,8 @@ async function globalStats(req:any,res:any) {
       }
       let worstRated:any  = Object.entries(averages).reduce((a,b)=>a[1]<b[1] ? a : b, ['',Number.MAX_SAFE_INTEGER] )
       worstRated = {
-        institution: institutions.find(({_id}:any)=>_id === parseInt(topRated[0])),
-        rating: topRated[1]
+        institution: institutions.find(({_id}:any)=>_id === parseInt(worstRated[0])),
+        rating: worstRated[1]
       }
       const data = {
         topRated,
