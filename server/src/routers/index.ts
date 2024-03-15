@@ -12,14 +12,21 @@ router.get('/by-office/:officeId', catchRoute(complaintsByOffice))
 
 
 async function complaintPost(req: any, res: any) {
-  const { time, user, complaintType, institutionId, rating, officeId, serviceType, clerk, comment, media } = req.body
+  const { time, user, complaints, officeId, serviceType, clerk, comment, media } = req.body
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  if (!(time && user && complaints && officeId && serviceType && clerk && comment && media))
+    return res.status(400).send({ success: false, message: 'Bad request' })
+  
+  const expectedComplaints = ["speed" , "politeness", "precision", "tech", "accessability", "pricing"]
+  Object.keys(complaints).forEach(c=>{
+    if(!expectedComplaints.includes(c)) res.status(400).send({success:false, message: `not al cmoplaints filled ${expectedComplaints}`})
+  })
+
   try{
     const newComplaint = {
       time: new Date(time),
       user,
-      complaintType,
-      institutionId,
-      rating,
+      complaints,
       officeId,
       serviceType,
       clerk,
@@ -27,9 +34,6 @@ async function complaintPost(req: any, res: any) {
       media
 
     }
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (!(time && user && complaintType && officeId && rating && institutionId && serviceType && clerk && comment && media))
-      res.status(400).send({ success: false, message: 'Bad request' })
     getDb().collection('complaints').insertOne(newComplaint)
 
   }catch(e){
