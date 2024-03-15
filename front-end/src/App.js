@@ -5,6 +5,7 @@ import ErrorPage from './pages/ErrorPage';
 import ComplaintPage from './pages/ComplaintPage';
 import ComplaintLocationPage from './pages/ComplaintLocationPage';
 import ComplaintFormPage from './pages/ComplaintFormPage';
+import InstitutionPage from './pages/InstitutionPage';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   },{
     path: "/complaint-form",
     element: <ComplaintFormPage />,
+    errorElement: <ErrorPage />
+  },{
+    path: "/institution-page",
+    element: <InstitutionPage />,
     errorElement: <ErrorPage />
   }
 ]);
