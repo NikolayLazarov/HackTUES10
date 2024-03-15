@@ -6,41 +6,47 @@ import Institutions from '../components/Institutions/Institutions'
 // import MostComplaintsStatistic from '../components/Statistics/MostComplaintsStatistic'
 import WholeComplaintsComponent from '../components/Statistics/WholeComplaintsComponent'
 import BestRating from '../components/Statistics/BestRating'
+import InstitutionsAvarageStatistics from '../components/Statistics/InstitutionsAvarageStatistics'
 
 const LandingPage = () => {
-  const mostComp = "Nap"
   const mostCompNUm = 12
   return (
     <>
         <nav>
               <Navbar/>
         </nav>
-        <article className='flex flex-col w-96 '>
+        <article className='flex flex-row items-center justify-center space-x-40'>
+          <div className='container_best_statistics w-96 space-y-5'>
 
-          <div>
-          <section className=' flex flex-col '>
-                <WholeComplaintsComponent  institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
-              </section>
-              <section className=' flex flex-col'>
-                {/* Fix */}
-                <BestDataComponent institutionName={"Bulgaria"} value={mostCompNUm}/>                  
-              </section>
-              <section className=' flex flex-col'>
-                {/* fix */}
-                  <WorstDataComponent institutionName={"Worst"} value={0.0}/>
-              </section>
-          </div>
+              <div className='space-y-5' >
+              <section className=' flex flex-col '>
+                    <WholeComplaintsComponent  institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
+                  </section>
+                  <section className=' flex flex-col'>
+                    {/* Fix */}
+                    <BestDataComponent institutionName={"Bulgaria"} value={mostCompNUm}/>                  
+                  </section>
+                  <section className=' flex flex-col'>
+                    {/* fix */}
+                      <WorstDataComponent institutionName={"Worst"} value={0.0}/>
+                  </section>
+              </div>
 
-          <div>
-            <section className=' flex flex-col'>
-                    <BestRating institutionName={"BestRating"} values={[1,2,3,4,5,6]}/>
-                </section>
+              <div>
+                <section className=' flex flex-col basis-1/4'>
+                        <BestRating institutionName={"BestRating"} values={[1,2,3,4,5,6]}/>
+                    </section>
+              </div>
+
           </div>
-            
+          
+            <div className='container_avarage_statistic basis-1/2 '> 
+              <InstitutionsAvarageStatistics institutionName={"Bulgaria"} values={[1,2,2,3,4,5,10,13]}/>
+            </div>
             
         </article>
 
-        <main className='institutions'>
+        <main className='institutions '>
             <Institutions />
         </main>
     </>
