@@ -30,12 +30,15 @@ const Institutions = () => {
     
     const renderedList = institutions.map( institution => 
     <li className='flex flex-row items-center justify-center space-x-11' key={institution.institututionId}> 
+    <a href="/institution-page" className='flex flex-row items-center justify-center space-x-11'> 
         <InstitutionAvatar /> 
         <h3>{institution.institututionName}</h3>
         <InputRange currentValue={institution.averages[institution.mostRelevant]} />
         <p>{institution.mostRelevant}</p>
         <GraphicEmelement mostRelevant={institution.historicalRating[institution.mostRelevant]}/>
-    </li>
+
+    </a>
+        </li>
     );
   
     return (
