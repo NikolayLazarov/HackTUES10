@@ -11,6 +11,7 @@ router.post('/', catchRoute(complaintPost))
 router.get('/by-institution/:institutionId', catchRoute(institutionSummary))
 router.get('/by-office/:officeId', catchRoute(complaintsByOffice))
 router.get('/global-stats', catchRoute(globalStats))
+router.get('/offices/:institutionId', catchRoute(officesByInstitution))
 
 const average = (arr:number[])=>{
   return arr.reduce((a,b)=>a+b, 0)/arr.length
@@ -23,6 +24,12 @@ const diviationFromAverage = (arr:number[]) => {
   return distance
 }
 
+
+async function officesByInstitution(req:any,res:any){
+  const offices = await getDb().collection('offices').find({}).toArray()
+  return res.status(200).send({success:true,data:offices})
+
+}
 async function complaintPost(req: any, res: any) {
   const { time, user, complaints, officeId, serviceType, clerk, comment, media, institutionId} = req.body
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
