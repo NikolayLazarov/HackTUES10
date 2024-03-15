@@ -3,6 +3,7 @@ import { getDb } from '../db'
 
 import { catchRoute } from './catchRoute'
 import { ComplaintType, Complaint } from '../interfaces'
+import { ObjectId } from 'mongodb'
 
 const router = Router()
 
@@ -63,12 +64,12 @@ async function institutionSummary(req:any,res:any){
 
   let data:any = {
     historicalRating: {
-        "speed": [],
-        "politeness": [], 
-        "precision": [],
-        "tech": [],
-        "accessability": [],
-        "pricing": []
+        speed: [],
+        politeness: [], 
+        precision: [],
+        tech: [],
+        accessability: [],
+        pricing: []
     },
     institutionId,
     institututionName: "PLACEHOLDER"
@@ -90,8 +91,30 @@ async function complaintsByOffice(req:any,res:any){
     return
   }
   const complaints = await getDb().collection('complaints').find({officeId}).toArray()
+  const office = await getDb().collection('offices').findOne({_id: officeId})
+  if(!office) return res.status(404).send({success:false,message:'Office not found'})
+  let data:any = {
+    complaints:{
+      speed: [],
+      politeness: [], 
+      precision: [],
+      tech: [],
+      accessability: [],
+      pricing: []
+    },
+    comments: complaints.map((c:Complaint)=>c.comment),
+    institutionId:office.institutionId,
+    officeId,
+    location: office.location,
+    contacts: office.contacts
+  }
+  complaints.forEach((c:Complaint)=>{
+    Object.keys(data.complaints).forEach(t=>{
+      data.complaints[t as ComplaintType].push(c.complaints[t as ComplaintType])
+    })
+  })
 
-  res.status(200).send({success:true, data: complaints})
+  res.status(200).send({success:true, data})
 }
 
 export default router
