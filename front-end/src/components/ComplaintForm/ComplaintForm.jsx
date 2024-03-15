@@ -4,10 +4,12 @@ import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 // import {Datepicker} from "react-datetime-picker"
 import DatePicker from '../DatePicker/DatePicker'
+import SelectorOptions from '../SelectorOptions/SelectorOptions';
 
 const ComplaintForm = () => {
   return (
     <>
+        {/* add user Id somewhere */}
 
         <label className="input input-bordered flex items-center gap-2">
         Name 
@@ -22,7 +24,14 @@ const ComplaintForm = () => {
         Date
         <DatePicker />
         </label>
-
+        
+        <label className="input input-bordered flex items-center gap-2">
+        Conplaint type
+        <SelectorOptions />
+        
+        
+        </label>
+        
         <label className="input input-bordered flex items-center gap-2">
         <input type="text" className="grow" placeholder="Search" />
         <kbd className="kbd kbd-sm">⌘</kbd>
