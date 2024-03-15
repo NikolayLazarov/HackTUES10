@@ -15,8 +15,10 @@ const LandingPage = () => {
         <nav>
               <Navbar/>
         </nav>
-        <article className='flex flex-row justify- '>
-              <section className=' flex flex-col'>
+        <article className='flex flex-col w-96 '>
+
+          <div>
+          <section className=' flex flex-col '>
                 <WholeComplaintsComponent  institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
               </section>
               <section className=' flex flex-col'>
@@ -27,9 +29,15 @@ const LandingPage = () => {
                 {/* fix */}
                   <WorstDataComponent institutionName={"Worst"} value={0.0}/>
               </section>
-              <section className=' flex flex-col'>
-                  <BestRating institutionName={"BestRating"} values={[1,2,3,4,5,6]}/>
-              </section>
+          </div>
+
+          <div>
+            <section className=' flex flex-col'>
+                    <BestRating institutionName={"BestRating"} values={[1,2,3,4,5,6]}/>
+                </section>
+          </div>
+            
+            
         </article>
 
         <main className='institutions'>
