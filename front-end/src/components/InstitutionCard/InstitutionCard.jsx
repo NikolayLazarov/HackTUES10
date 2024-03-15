@@ -9,7 +9,7 @@ const InstitutionCard = ({name, info, img, id}) => {
         <h2 className="card-title">{name}</h2>
         <p>{info}</p>
         <div className="card-actions justify-end">
-        <button className="btn btn-primaryg ">Complain</button>
+        <a href='/complaint-form' className="btn btn-primary">Complain</a> 
         </div>
     </div>
     </div>

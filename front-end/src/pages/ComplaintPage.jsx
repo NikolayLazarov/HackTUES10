@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Nabvar'
 import BreadcrumsStart from '../components/BreadCrums/BreadcrumsStart'
+import InstitutionCard from '../components/InstitutionCard/InstitutionCard'
 
 //get a list of all institutions available
     //maybe add new
@@ -15,26 +16,35 @@ import BreadcrumsStart from '../components/BreadCrums/BreadcrumsStart'
 const ComplaintPage = () => {
     
       const renderedList = data.map( institution => 
-        <li className='flex flex-row items-center justify-center space-x-11' key={institution.institututionId}> 
-              <a href='/complaint-form'> {institution.institutinName}
-        </a>            
-          </li>
+
+        <InstitutionCard key={institution.institutinId} name = {institution.institutinName}/>
+
+        // <li className='flex flex-row items-center justify-center space-x-11' key={institution.institututionId}> 
+        //       <a href='/complaint-form'> {institution.institutinName}
+        // </a>            
+        //   </li>
 
         );
        
   return (
     <>
         <Navbar />
-
-        {/* <h2>Form for </h2> */}
+        
+        
+        <main className='flex flex-col items-center space-y-10 '>
         <BreadcrumsStart />
 
         <p>Page dedicated to the people. Here you can file complaints, feedback and personal experience concerning
           National institutions. 
         </p>
         <p>The first step is to choose the institution that is concerning you:</p>
+        
+        <div className='flex flex-row space-x-10'>
+            {renderedList}      
+        </div>
 
-        {renderedList}
+        </main>
+        
      </>
   )
 }
