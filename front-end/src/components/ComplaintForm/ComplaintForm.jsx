@@ -1,4 +1,9 @@
 import React from 'react'
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
+// import {Datepicker} from "react-datetime-picker"
+import DatePicker from '../DatePicker/DatePicker'
 
 const ComplaintForm = () => {
   return (
@@ -12,6 +17,12 @@ const ComplaintForm = () => {
         Email
         <input type="text" className="grow" placeholder="daisy@site.com" />
         </label>
+
+        <label className="input input-bordered flex items-center gap-2">
+        Date
+        <DatePicker />
+        </label>
+
         <label className="input input-bordered flex items-center gap-2">
         <input type="text" className="grow" placeholder="Search" />
         <kbd className="kbd kbd-sm">⌘</kbd>
