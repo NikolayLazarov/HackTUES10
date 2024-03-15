@@ -10,6 +10,16 @@ router.post('/', catchRoute(complaintPost))
 router.get('/by-institution/:institutionId', catchRoute(institutionSummary))
 router.get('/by-office/:officeId', catchRoute(complaintsByOffice))
 
+const average = (arr:number[])=>{
+  return arr.reduce((a,b)=>a+b, 0)/arr.length
+}
+
+const diviationFromAverage = (arr:number[]) => {
+  const av = average(arr)
+  let distance = 0
+  arr.forEach((n)=> distance += Math.abs(n-av))
+  return distance
+}
 
 async function complaintPost(req: any, res: any) {
   const { time, user, complaints, officeId, serviceType, clerk, comment, media, institutionId} = req.body
@@ -66,12 +76,10 @@ async function institutionSummary(req:any,res:any){
   complaints.forEach((c: Complaint) => 
     Object.keys(data.historicalRating).forEach((t)=>data.historicalRating[t].push(c.complaints[t as ComplaintType]))
   )
-
-  // determines importance of complaintType based on number of complaints
-  data.mostRelevant =( Object.entries(data.historicalRating) as [string,number[]][]).reduce(
-    (a:[string,number[]],b:[string,number[]]):any => a[1].length>b[1].length ? a : b ,
-    ['',[]]
-  )[0]
+  // determines importance based on diviation from average
+  data.mostRelevant =  Object.entries(data.historicalRating).reduce((a: any, b:any)=> 
+     diviationFromAverage(a[1] as number[]) < diviationFromAverage(b[1] as number[]) ? a : b
+  ,['',[]])[0]
   res.status(200).send({success:true, data})
 }
 
