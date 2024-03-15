@@ -19,7 +19,7 @@ const InstitutionPage = () => {
 
     const renderedLocations = listLocations.map(location => 
         <li className='flex' key={location.locationId}>
-            <a href='/complaint-form' className='btn btn-neutral btn-wide
+            <a href='/location-info-id' className='btn btn-neutral btn-wide
 '>{location.locationName} </a>
         
         </li>

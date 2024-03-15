@@ -6,6 +6,7 @@ import ComplaintPage from './pages/ComplaintPage';
 import ComplaintLocationPage from './pages/ComplaintLocationPage';
 import ComplaintFormPage from './pages/ComplaintFormPage';
 import InstitutionPage from './pages/InstitutionPage';
+import LocationPage from './pages/LocationPage';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     path: "/institution-page",
     element: <InstitutionPage />,
     errorElement: <ErrorPage />
+  },{
+    path:"/location-info-id",
+    element: <LocationPage /> ,
+    errorElement: <ErrorPage/>
   }
 ]);
 
