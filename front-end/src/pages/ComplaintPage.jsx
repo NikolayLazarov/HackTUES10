@@ -26,7 +26,7 @@ const ComplaintPage = () => {
         
         
         <main className='flex flex-col items-center space-y-10 '>
-        <BreadcrumsStart />
+        <BreadcrumsStart step={1}/>
 
         <p>Page dedicated to the people. Here you can file complaints, feedback and personal experience concerning
           National institutions. 
