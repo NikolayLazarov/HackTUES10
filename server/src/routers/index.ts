@@ -61,7 +61,7 @@ async function institutionSummary(req:any,res:any){
     res.status(400).send({success:false, message:"institution id must be a number"})
     return
   }
-  const complaints = await getDb().collection('complaints').find({institutionId}).toArray()
+  const complaints = await getDb().collection('complaints').find({institutionId}).sort({time:1}).toArray()
 
   let data:any = {
     historicalRating: {
@@ -92,7 +92,7 @@ async function complaintsByOffice(req:any,res:any){
     return
   }
   const [complaints,office] = await Promise.all([
-      getDb().collection('complaints').find({officeId}).toArray(),
+      getDb().collection('complaints').find({officeId}).sort({time:1}).toArray(),
       getDb().collection('offices').findOne({_id: officeId})
     ])
 
@@ -122,15 +122,26 @@ async function complaintsByOffice(req:any,res:any){
 }
 
 async function globalStats(req:any,res:any) {
-      const complaints:Complaint[] = await getDb().collection('complaints').find({}).toArray()
+      const complaints:Complaint[] = await getDb().collection('complaints').find({}).sort({time:1}).toArray()
       const institutions = await getDb().collection('institutions').find({}).toArray()
 
       //calculate instutions average scores
       let averages = Object.fromEntries(institutions.map(( { _id }:any)=>[_id.toString(),[]]))
       let growths = Object.fromEntries(institutions.map(( { _id }:any)=>[_id.toString(),0]))
+      let overallRating:any= {
+        speed: [],
+        politeness: [], 
+        precision: [],
+        tech: [],
+        accessability: [],
+        pricing: []
+      }
       
       Object.values(complaints).map(( { institutionId, complaints })=>{
         averages[institutionId].push(average(Object.values(complaints)))
+        Object.entries(complaints).forEach(([k,v])=>{
+          overallRating[k].push(v)
+        })
       })
   
       Object.entries(averages).forEach(([institutionId,numbers])=>{
@@ -141,11 +152,13 @@ async function globalStats(req:any,res:any) {
         averages[institutionId] = avg
       })
       let bestGrowing:any = Object.entries(growths).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
+      
       bestGrowing  = {
         chartData: growths[bestGrowing[0]],
         institutionId: bestGrowing[0],
         name: institutions.find((({ _id }: any)=> _id ==bestGrowing[0]))
       }
+
       const topRated  = Object.entries(averages).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
       const worstRated  = Object.entries(averages).reduce((a,b)=>a[1]<b[1] ? a : b, ['',Number.MAX_SAFE_INTEGER] )
       const data = {
@@ -153,6 +166,7 @@ async function globalStats(req:any,res:any) {
         worstRated,
         bestGrowing,
         totalComplaintsCount: complaints.length,
+        overallRating
       }
       res.status(200).send({success:true,data})
 }
