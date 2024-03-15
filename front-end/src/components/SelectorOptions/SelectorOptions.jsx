@@ -8,10 +8,6 @@ const [pickedOption,setOption] = useState("");
 
     return (    
     <label className="form-control w-full max-w-xs">
-  {/* <div className="label">
-    <span className="label-text">Pick the best fantasy franchise</span>
-    <span className="label-text-alt">Alt label</span>
-  </div> */}
   <select className="select select-bordered">
     <option disabled selected>Pick one</option>
     <option onClick={()=> {setOption("speed")} }>speed</option>
@@ -22,10 +18,6 @@ const [pickedOption,setOption] = useState("");
     <option onCLick={()=>{setOption("pricing")}}>pricing</option>
 
   </select>
-  {/* <div className="label">
-    <span className="label-text-alt">Alt label</span>
-    <span className="label-text-alt">Alt label</span>
-  </div> */}
 </label>
   )
 }

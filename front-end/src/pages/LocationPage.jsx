@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Nabvar'
-import Map from '../components/Map/Map'
+// import Map from '../components/Map/Map'
 const LocationPage = () => {
   return (
     <>

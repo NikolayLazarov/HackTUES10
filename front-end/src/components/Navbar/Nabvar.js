@@ -8,7 +8,10 @@ const Navbar = () => {
             <a href="/" className="btn btn-ghost text-xl">daisyUI</a>
           </div>
 
-          {/* <div></div> */}
+          <div>
+            <a href='/complaint' className='btn btn-error text-xl'>Feedback</a>
+          </div>
+
 
           <div className="flex-none">
             <ul className="menu menu-horizontal px-1">
