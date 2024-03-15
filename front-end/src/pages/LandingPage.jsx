@@ -9,7 +9,7 @@ const LandingPage = () => {
     <>
         <nav>
               <Navbar/>
-          </nav>
+        </nav>
         <article className='flex flex-row justify- '>
               <section className=' flex flex-col'>
                 <WorstDataComponent/>
