@@ -3,9 +3,10 @@ export type ComplaintType = "speed" | "politeness" | "precision" | "tech" | "acc
 export interface Complaint {
     "time": string
     "user": number
-    "type": ComplaintType
+    "complaints": {
+      [key in ComplaintType] : number
+    } 
     "institutionId": number
-    "rating": number
     "officeId": number
     "serviceType": string
     "clerk": string
