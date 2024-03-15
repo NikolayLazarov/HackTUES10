@@ -12,7 +12,7 @@ const GraphicEmelement = ({mostRelevant}) => {
         backgroundColor: 'rgba(75,192,192,1)',
         // borderColor: 'rgba(0,10,0,1)',
         borderColor: "red",
-        borderWidth: 1,
+        borderWidth: 5,
         data: mostRelevant,
       },
     ],

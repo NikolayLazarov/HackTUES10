@@ -33,8 +33,9 @@ const Institutions = () => {
     
     const renderNew = newList.map(number => <p>{number}</p>);
     const renderedList = institutions.map( institution => 
-    <li className='flex flex-row' key={institution.institututionId}> 
+    <li className='flex flex-row items-center justify-center space-x-11' key={institution.institututionId}> 
         <InstitutionAvatar /> 
+        <h3>{institution.institututionName}</h3>
         <InputRange currentValue={institution.averages[institution.mostRelevant]} />
         <p>{institution.mostRelevant}</p>
         <GraphicEmelement mostRelevant={institution.historicalRating[institution.mostRelevant]}/>
