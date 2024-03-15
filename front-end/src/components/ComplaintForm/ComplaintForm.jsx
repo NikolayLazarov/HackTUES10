@@ -5,6 +5,7 @@ import 'react-clock/dist/Clock.css';
 // import {Datepicker} from "react-datetime-picker"
 import DatePicker from '../DatePicker/DatePicker'
 import SelectorOptions from '../SelectorOptions/SelectorOptions';
+import Rating from '../SelectorOptions/Rating';
 
 const ComplaintForm = () => {
   return (
@@ -27,21 +28,30 @@ const ComplaintForm = () => {
         
         <label className="input input-bordered flex items-center gap-2">
         Conplaint type
-        <SelectorOptions />
-        
-        
+            <SelectorOptions options={["speed" , "politeness", "precision", "tech", "accessability", "pricing"]}/>
         </label>
-        
+
+        <label className='box box-border '>
+        <p>Rate</p>        <Rating />
+
+        </label>
+
         <label className="input input-bordered flex items-center gap-2">
-        <input type="text" className="grow" placeholder="Search" />
-        <kbd className="kbd kbd-sm">⌘</kbd>
-        <kbd className="kbd kbd-sm">K</kbd>
+        Service 
+        <input type="text" className="grow" placeholder="Ivan Ivanov" />
         </label>
+
         <label className="input input-bordered flex items-center gap-2">
-        <input type="text" className="grow" placeholder="Search" />
-        <span className="badge badge-info">Optional</span>
+        Clerk 
+        <input type="text" className="grow" placeholder="Name, ID, ..." />
         </label>
-    
+
+        <label className="form-control">
+        <div className="label">
+            <span className="label-text">Your complaint</span>
+        </div>
+        <textarea className="textarea textarea-bordered h-24" placeholder="Text"></textarea>
+        </label>    
     </>
   )
 }
