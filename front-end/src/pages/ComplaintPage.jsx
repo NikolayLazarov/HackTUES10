@@ -18,12 +18,6 @@ const ComplaintPage = () => {
       const renderedList = data.map( institution => 
 
         <InstitutionCard key={institution.institutinId} name = {institution.institutinName}/>
-
-        // <li className='flex flex-row items-center justify-center space-x-11' key={institution.institututionId}> 
-        //       <a href='/complaint-form'> {institution.institutinName}
-        // </a>            
-        //   </li>
-
         );
        
   return (
