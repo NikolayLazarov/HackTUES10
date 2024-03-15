@@ -1,4 +1,8 @@
 import React from 'react'
+import Navbar from '../components/Navbar/Nabvar'
+import WorstDataComponent from '../components/Statistics/WorstDataComponent'
+import BestDataComponent from '../components/Statistics/BestDataComponent'
+import Institutions from '../components/Institutions/Institutions'
 
 const LandingPage = () => {
   return (
