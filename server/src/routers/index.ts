@@ -10,6 +10,7 @@ const router = Router()
 router.post('/', catchRoute(complaintPost))
 router.get('/by-institution/:institutionId', catchRoute(institutionSummary))
 router.get('/by-office/:officeId', catchRoute(complaintsByOffice))
+router.get('/global-stats', catchRoute(globalStats))
 
 const average = (arr:number[])=>{
   return arr.reduce((a,b)=>a+b, 0)/arr.length
@@ -90,8 +91,11 @@ async function complaintsByOffice(req:any,res:any){
     res.status(400).send({success:false, message:"office id must be a number"})
     return
   }
-  const complaints = await getDb().collection('complaints').find({officeId}).toArray()
-  const office = await getDb().collection('offices').findOne({_id: officeId})
+  const [complaints,office] = await Promise.all([
+      getDb().collection('complaints').find({officeId}).toArray(),
+      getDb().collection('offices').findOne({_id: officeId})
+    ])
+
   if(!office) return res.status(404).send({success:false,message:'Office not found'})
   let data:any = {
     complaints:{
@@ -116,5 +120,42 @@ async function complaintsByOffice(req:any,res:any){
 
   res.status(200).send({success:true, data})
 }
+
+async function globalStats(req:any,res:any) {
+      const complaints:Complaint[] = await getDb().collection('complaints').find({}).toArray()
+      const institutions = await getDb().collection('institutions').find({}).toArray()
+
+      //calculate instutions average scores
+      let averages = Object.fromEntries(institutions.map(( { _id }:any)=>[_id.toString(),[]]))
+      let growths = Object.fromEntries(institutions.map(( { _id }:any)=>[_id.toString(),0]))
+      
+      Object.values(complaints).map(( { institutionId, complaints })=>{
+        averages[institutionId].push(average(Object.values(complaints)))
+      })
+  
+      Object.entries(averages).forEach(([institutionId,numbers])=>{
+        const avg = average(numbers)
+        const fisrtHalfDistanceToAvg = average(numbers.slice(0,Math.floor(numbers.length/2)).map((a:number)=>avg-a))
+        const secondHalfDistanceToAvg = average(numbers.slice(Math.floor(numbers.length/2), numbers.length).map((a:number)=>a-avg))
+        growths[institutionId] = fisrtHalfDistanceToAvg+secondHalfDistanceToAvg
+        averages[institutionId] = avg
+      })
+      let bestGrowing:any = Object.entries(growths).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
+      bestGrowing  = {
+        chartData: growths[bestGrowing[0]],
+        institutionId: bestGrowing[0],
+        name: institutions.find((({ _id }: any)=> _id ==bestGrowing[0]))
+      }
+      const topRated  = Object.entries(averages).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
+      const worstRated  = Object.entries(averages).reduce((a,b)=>a[1]<b[1] ? a : b, ['',Number.MAX_SAFE_INTEGER] )
+      const data = {
+        topRated,
+        worstRated,
+        bestGrowing,
+        totalComplaintsCount: complaints.length,
+      }
+      res.status(200).send({success:true,data})
+}
+
 
 export default router
