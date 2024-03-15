@@ -20,7 +20,6 @@ const LandingPage = () => {
     })
   },[])
 
-  console.log(generalStats)
   return (
     <>
         <nav>
@@ -28,16 +27,16 @@ const LandingPage = () => {
         </nav>
         <article className='flex flex-row justify- '>
               <section className=' flex flex-col'>
-                <WholeComplaintsComponent  institutionName={generalStats && generalStats.topRated[0]} complainsNumber={mostCompNUm}/>
+                <WholeComplaintsComponent complainsNumber={generalStats && generalStats.totalComplaintsCount}/>
               </section>
               <section className=' flex flex-col'>
-                <BestDataComponent institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>                  
+                <BestDataComponent data={generalStats && generalStats.topRated}/>                  
               </section>
               <section className=' flex flex-col'>
-                  <WorstDataComponent institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
+                  <WorstDataComponent data={generalStats && generalStats.worstRated}/>
               </section>
               <section className=' flex flex-col'>
-                  <BestRating institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
+                  <BestRating graphData={generalStats && generalStats.overallRating}/>
               </section>
         </article>
 

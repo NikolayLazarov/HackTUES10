@@ -1,10 +1,12 @@
 import React from 'react'
 import GraphicEmelement from '../GraphicsElement/GraphicEmelement'
 
-const BestRating = () => {
+const BestRating = ({graphData}) => {
+    console.log("asd")
+    console.log(graphData)
   return (
         <>
-            <GraphicEmelement />
+            <GraphicEmelement graphData={graphData}/>
         </>
     )
 }
