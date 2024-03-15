@@ -3,8 +3,11 @@ import Navbar from '../components/Navbar/Nabvar'
 import WorstDataComponent from '../components/Statistics/WorstDataComponent'
 import BestDataComponent from '../components/Statistics/BestDataComponent'
 import Institutions from '../components/Institutions/Institutions'
+import MostComplaintsStatistic from '../components/Statistics/MostComplaintsStatistic'
 
 const LandingPage = () => {
+  const mostComp = "Nap"
+  const mostCompNUm = 12
   return (
     <>
         <nav>
@@ -12,7 +15,7 @@ const LandingPage = () => {
         </nav>
         <article className='flex flex-row justify- '>
               <section className=' flex flex-col'>
-                <WorstDataComponent/>
+                <MostComplaintsStatistic institutionName={mostComp} complainsNumber={mostCompNUm}/>
                 <WorstDataComponent/>
 
               </section>
