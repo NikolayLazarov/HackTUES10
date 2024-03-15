@@ -4,8 +4,6 @@ import InputRange from '../InputRange/InputRange';
 import GraphicEmelement from '../GraphicsElement/GraphicEmelement';
 
 
-const newList = [0,1,2,3,4];
-   
 const institutions = [{
     averages: {
         "speed": 1,
@@ -30,8 +28,6 @@ const institutions = [{
 
 const Institutions = () => {
     
-    
-    const renderNew = newList.map(number => <p>{number}</p>);
     const renderedList = institutions.map( institution => 
     <li className='flex flex-row items-center justify-center space-x-11' key={institution.institututionId}> 
         <InstitutionAvatar /> 

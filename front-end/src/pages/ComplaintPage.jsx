@@ -14,11 +14,14 @@ import BreadcrumsStart from '../components/BreadCrums/BreadcrumsStart'
 
 const ComplaintPage = () => {
     
+      const renderedList = data.map( institution => 
+        <li className='flex flex-row items-center justify-center space-x-11' key={institution.institututionId}> 
+              <a href='/complaint-form'> {institution.institutinName}
+        </a>            
+          </li>
 
-    const renderedData = data.map(institution => {
-      <li><a href="complaint/:id">{institution.institutinName}</a></li>
-    });
-
+        );
+       
   return (
     <>
         <Navbar />
@@ -31,7 +34,7 @@ const ComplaintPage = () => {
         </p>
         <p>The first step is to choose the institution that is concerning you:</p>
 
-        {renderedData}
+        {renderedList}
      </>
   )
 }
