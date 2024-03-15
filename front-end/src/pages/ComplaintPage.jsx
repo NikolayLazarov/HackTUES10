@@ -24,9 +24,10 @@ const ComplaintPage = () => {
     <>
         <Navbar />
         
+        <BreadcrumsStart step={1}/>
         
         <main className='flex flex-col items-center space-y-10 '>
-        <BreadcrumsStart step={1}/>
+        
         <div className='text-xl'>
           <p>Page dedicated to the people.
           Here anyone can file complaints, feedback and personal experience concerning National institutions. </p>

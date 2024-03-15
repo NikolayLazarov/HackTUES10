@@ -32,11 +32,10 @@ const ComplaintLocationPage = () => {
         <Navbar />
 
         <BreadcrumsStart step={2}/>
-
+    
         <main className='flex flex-row'>
             <div className='w-1/3'>
                 {renderedLocations}
-
             </div>
 
             <Map width="" height= "" />
