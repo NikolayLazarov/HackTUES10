@@ -153,15 +153,15 @@ async function globalStats(req:any,res:any) {
   
       Object.entries(averages).forEach(([institutionId,numbers])=>{
         const avg = average(numbers)
-        const fisrtHalfDistanceToAvg = average(numbers.slice(0,Math.floor(numbers.length/2)).map((a:number)=>avg-a))
-        const secondHalfDistanceToAvg = average(numbers.slice(Math.floor(numbers.length/2), numbers.length).map((a:number)=>a-avg))
+        const fisrtHalfDistanceToAvg = average(numbers.slice(0,Math.floor(numbers.length/2)).map((a:number)=>avg-a)) | 0
+        const secondHalfDistanceToAvg = average(numbers.slice(Math.floor(numbers.length/2), numbers.length).map((a:number)=>a-avg)) | 0
         growths[institutionId] = fisrtHalfDistanceToAvg+secondHalfDistanceToAvg
         averages[institutionId] = avg
       })
       let bestGrowing:any = Object.entries(growths).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
       
       bestGrowing  = {
-        chartData: growths[bestGrowing[0]],
+        chartData: complaints.filter(({institutionId}:any)=> institutionId === parseInt(bestGrowing[0])).map(({complaints}:any)=>average(Object.values(complaints))),
         institutionId: bestGrowing[0],
         name: institutions.find((({ _id }: any)=> _id ==bestGrowing[0]))
       }
