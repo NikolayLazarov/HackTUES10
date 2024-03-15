@@ -4,24 +4,24 @@ import BreadcrumsStart from '../components/BreadCrums/BreadcrumsStart'
 import Map from '../components/Map/Map'
 
 const listLocations = [{
-    locationName: "location1",
+    locationName: "Geo Milev",
     locationId: 1
     },{
-        locationName: "location2",
+        locationName: "G.M. Dimitrov",
         locationId: 2
     },{
-        locationName: "location3",
+        locationName: "Nadezdha",
         locationId: 3
     }
 
 ]
 
 
-const ComplaintLocationPage = () => {
+const ComplaintLocationPage = ({institution}) => {
     
     const renderedLocations = listLocations.map(location => 
             <li className='flex' key={location.locationId}>
-                <a href='/complaint-form' className='btn btn-neutral btn-wide
+                <a href='/complaint-form' className='btn btn-wide
     '>{location.locationName} </a>
             
             </li>
