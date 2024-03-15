@@ -3,6 +3,7 @@ import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import LandingPage from './pages/LandingPage';
 import ErrorPage from './pages/ErrorPage';
 import ComplaintPage from './pages/ComplaintPage';
+import ComplaintLocationPage from './pages/ComplaintLocationPage';
 
 const router = createBrowserRouter([
   {
