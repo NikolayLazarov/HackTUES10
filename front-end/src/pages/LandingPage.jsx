@@ -48,7 +48,7 @@ const LandingPage = () => {
               <Dividor />
               <div>
                 <section className=' flex flex-col basis-1/4'>
-                  <BestGrowth graphData={generalStats && generalStats.overallRating}/>
+                  <BestGrowth graphData={generalStats && generalStats.bestGrowing.chartData}/>
                 </section>
               </div>
 
