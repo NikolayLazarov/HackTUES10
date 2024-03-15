@@ -12,9 +12,9 @@ router.get('/by-office/:officeId', catchRoute(complaintsByOffice))
 
 
 async function complaintPost(req: any, res: any) {
-  const { time, user, complaints, officeId, serviceType, clerk, comment, media } = req.body
+  const { time, user, complaints, officeId, serviceType, clerk, comment, media, institutionId} = req.body
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-  if (!(time && user && complaints && officeId && serviceType && clerk && comment && media))
+  if (!(time && user && complaints && officeId && serviceType && clerk && comment && media && institutionId))
     return res.status(400).send({ success: false, message: 'Bad request' })
   
   const expectedComplaints = ["speed" , "politeness", "precision", "tech", "accessability", "pricing"]
@@ -31,8 +31,8 @@ async function complaintPost(req: any, res: any) {
       serviceType,
       clerk,
       comment,
-      media
-
+      media,
+      institutionId
     }
     getDb().collection('complaints').insertOne(newComplaint)
 
@@ -52,14 +52,6 @@ async function institutionSummary(req:any,res:any){
   const complaints = await getDb().collection('complaints').find({institutionId}).toArray()
 
   let data:any = {
-    averages: {
-        "speed": 0,
-        "politeness": 0,
-        "precision": 0,
-        "tech": 0,
-        "accessability": 0,
-        "pricing": 0
-    },
     historicalRating: {
         "speed": [],
         "politeness": [], 
@@ -71,14 +63,9 @@ async function institutionSummary(req:any,res:any){
     institutionId,
     institututionName: "PLACEHOLDER"
   }
-  complaints.forEach((c: Complaint) => {
-    data.averages[c.type as ComplaintType] += c.rating
-    data.historicalRating[c.type].push(c.rating)
-  })
-
-  Object.keys(data.averages).map((key)=>{
-    if (data.historicalRating.length) data.averages[key] /= data.historicalRating.length
-  })
+  complaints.forEach((c: Complaint) => 
+    Object.keys(data.historicalRating).forEach((t)=>data.historicalRating[t].push(c.complaints[t as ComplaintType]))
+  )
 
   // determines importance of complaintType based on number of complaints
   data.mostRelevant =( Object.entries(data.historicalRating) as [string,number[]][]).reduce(
