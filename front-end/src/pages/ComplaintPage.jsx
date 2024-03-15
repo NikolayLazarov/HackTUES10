@@ -24,15 +24,19 @@ const ComplaintPage = () => {
     <>
         <Navbar />
         
+        <BreadcrumsStart step={1}/>
         
         <main className='flex flex-col items-center space-y-10 '>
-        <BreadcrumsStart />
-
-        <p>Page dedicated to the people. Here you can file complaints, feedback and personal experience concerning
-          National institutions. 
-        </p>
-        <p>The first step is to choose the institution that is concerning you:</p>
         
+        <div className='text-xl'>
+          <p>Page dedicated to the people.
+          Here anyone can file complaints, feedback and personal experience concerning National institutions. </p>
+          
+        </div>
+        <div>
+          <p className='font-bold text-2xl'>The first step is to choose the institution that is concerning you:</p>
+
+        </div>
         <div className='flex flex-row space-x-10'>
             {renderedList}      
         </div>

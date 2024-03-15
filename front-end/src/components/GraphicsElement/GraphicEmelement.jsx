@@ -18,7 +18,7 @@ const GraphicEmelement = ({graphData}) => {
       }))
     :[]
   }
-  console.log(data)
+  console.log({data})
   return (
 <div>
       <Line
