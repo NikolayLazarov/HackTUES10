@@ -8,7 +8,7 @@ const ComplaintFormPage = () => {
     <>
         <Navbar />
         <BreadcrumsStart />
-        <div className='container w-96'>
+        <div className='flex justify-center items-center content-center'>
         < ComplaintForm />
             
         </div>
