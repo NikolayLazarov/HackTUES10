@@ -20,13 +20,15 @@ const LandingPage = () => {
                 <WholeComplaintsComponent  institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
               </section>
               <section className=' flex flex-col'>
-                <BestDataComponent institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>                  
+                {/* Fix */}
+                <BestDataComponent institutionName={"Bulgaria"} value={mostCompNUm}/>                  
               </section>
               <section className=' flex flex-col'>
-                  <WorstDataComponent institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
+                {/* fix */}
+                  <WorstDataComponent institutionName={"Worst"} value={0.0}/>
               </section>
               <section className=' flex flex-col'>
-                  <BestRating institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
+                  <BestRating institutionName={"BestRating"} values={[1,2,3,4,5,6]}/>
               </section>
         </article>
 
