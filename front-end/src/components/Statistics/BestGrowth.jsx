@@ -1,7 +1,7 @@
 import React from 'react'
 import GraphicEmelement from '../GraphicsElement/GraphicEmelement'
 
-const BestRating = ({values}) => {
+const BestGrowth = ({values}) => {
   return (
         <>
             <GraphicEmelement numberValues={values} />
@@ -9,4 +9,4 @@ const BestRating = ({values}) => {
     )
 }
 
-export default BestRating
+export default BestGrowth

@@ -5,8 +5,9 @@ import BestDataComponent from '../components/Statistics/BestDataComponent'
 import Institutions from '../components/Institutions/Institutions'
 // import MostComplaintsStatistic from '../components/Statistics/MostComplaintsStatistic'
 import WholeComplaintsComponent from '../components/Statistics/WholeComplaintsComponent'
-import BestRating from '../components/Statistics/BestRating'
 import InstitutionsAvarageStatistics from '../components/Statistics/InstitutionsAvarageStatistics'
+import Dividor from '../components/Dividor/Dividor'
+import BestGrowth from '../components/Statistics/BestGrowth'
 
 const LandingPage = () => {
   const mostCompNUm = 12
@@ -31,10 +32,10 @@ const LandingPage = () => {
                       <WorstDataComponent institutionName={"Worst"} value={0.0}/>
                   </section>
               </div>
-
+              <Dividor />
               <div>
                 <section className=' flex flex-col basis-1/4'>
-                        <BestRating institutionName={"BestRating"} values={[1,2,3,4,5,6]}/>
+                        <BestGrowth institutionName={"BestRating"} values={[1,2,3,4,5,6]}/>
                     </section>
               </div>
 
@@ -45,6 +46,7 @@ const LandingPage = () => {
             </div>
             
         </article>
+        <Dividor />
 
         <main className='institutions '>
             <Institutions />
