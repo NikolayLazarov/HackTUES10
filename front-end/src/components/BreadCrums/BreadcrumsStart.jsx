@@ -10,11 +10,11 @@ const BreadcrumsStart = ({step}) => {
     if (step ===1){
       firstBLock = <div className="timeline-start timeline-box bg-primary">Institution</div>;
     }else if (step === 2){
-      firstBLock = <div className="timeline-start timeline-box bg-neutral">Institution</div>;
+      firstBLock = <div className="timeline-start timeline-box bg-success">Institution</div>;
       secondBlock = <div className="timeline-start timeline-box bg-primary">Choose Location</div>
      }else if (step === 3){
-      firstBLock = <div className="timeline-start timeline-box bg-neutral">Institution</div>;
-      secondBlock = <div className="timeline-start timeline-box bg-neutral">Choose Location</div>
+      firstBLock = <div className="timeline-start timeline-box bg-success">Institution</div>;
+      secondBlock = <div className="timeline-start timeline-box bg-success">Choose Location</div>
       thirdBLock = <div className="timeline-start timeline-box bg-primary">File complaint</div>
 
      }

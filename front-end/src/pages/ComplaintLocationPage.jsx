@@ -31,7 +31,7 @@ const ComplaintLocationPage = () => {
     <>
         <Navbar />
 
-        <BreadcrumsStart page=""/>
+        <BreadcrumsStart step={2}/>
 
         <main className='flex flex-row'>
             <div className='w-1/3'>
