@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar/Nabvar'
 
-const ComplainPage = () => {
+const ComplaintPage = () => {
   return (
     <>
         <Navbar />
@@ -12,4 +12,4 @@ const ComplainPage = () => {
   )
 }
 
-export default ComplainPage
+export default ComplaintPage
