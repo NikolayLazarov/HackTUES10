@@ -6,8 +6,11 @@ import 'react-clock/dist/Clock.css';
 import DatePicker from '../DatePicker/DatePicker'
 import SelectorOptions from '../SelectorOptions/SelectorOptions';
 import Rating from '../SelectorOptions/Rating';
+import {useNavigate} from "react-router-dom"
 
 const ComplaintForm = () => {
+    const navigate = useNavigate();
+
   return (
     <div className='flex  flex-col space-y-5'>
         {/* add user Id somewhere */}
@@ -61,9 +64,14 @@ const ComplaintForm = () => {
         </div>
         
         <div className='flex justify-center '>
-            <button onClick={()=>{ /* send data */ }}  className='btn btn-wide btn-primary'>Submit Revue</button>
+            <button 
+            onClick={()=>{ 
+                /* send data, return to landing page */  
+                navigate("/");
+            }}  
+            className='btn btn-wide btn-primary'
+            >Submit Revue</button>
         </div>
-            
     </div> 
   )
 }
