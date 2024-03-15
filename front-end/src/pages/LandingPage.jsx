@@ -3,7 +3,9 @@ import Navbar from '../components/Navbar/Nabvar'
 import WorstDataComponent from '../components/Statistics/WorstDataComponent'
 import BestDataComponent from '../components/Statistics/BestDataComponent'
 import Institutions from '../components/Institutions/Institutions'
-import MostComplaintsStatistic from '../components/Statistics/MostComplaintsStatistic'
+// import MostComplaintsStatistic from '../components/Statistics/MostComplaintsStatistic'
+import WholeComplaintsComponent from '../components/Statistics/WholeComplaintsComponent'
+import BestRating from '../components/Statistics/BestRating'
 
 const LandingPage = () => {
   const mostComp = "Nap"
@@ -15,18 +17,17 @@ const LandingPage = () => {
         </nav>
         <article className='flex flex-row justify- '>
               <section className=' flex flex-col'>
-                <MostComplaintsStatistic institutionName={mostComp} complainsNumber={mostCompNUm}/>
-                <WorstDataComponent/>
-
+                <WholeComplaintsComponent  institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
               </section>
               <section className=' flex flex-col'>
-                <BestDataComponent />                  
+                <BestDataComponent institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>                  
               </section>
               <section className=' flex flex-col'>
-                  <WorstDataComponent />
-                  <WorstDataComponent />
+                  <WorstDataComponent institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
               </section>
-
+              <section className=' flex flex-col'>
+                  <BestRating institutionName={"Bulgaria"} complainsNumber={mostCompNUm}/>
+              </section>
         </article>
 
         <main className='institutions'>
