@@ -166,8 +166,16 @@ async function globalStats(req:any,res:any) {
         name: institutions.find((({ _id }: any)=> _id ==bestGrowing[0]))
       }
 
-      const topRated  = Object.entries(averages).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
-      const worstRated  = Object.entries(averages).reduce((a,b)=>a[1]<b[1] ? a : b, ['',Number.MAX_SAFE_INTEGER] )
+      let topRated:any = Object.entries(averages).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
+      topRated = {
+        institution: institutions.find(({_id}:any)=>_id === parseInt(topRated[0])),
+        rating: topRated[1]
+      }
+      let worstRated:any  = Object.entries(averages).reduce((a,b)=>a[1]<b[1] ? a : b, ['',Number.MAX_SAFE_INTEGER] )
+      worstRated = {
+        institution: institutions.find(({_id}:any)=>_id === parseInt(topRated[0])),
+        rating: topRated[1]
+      }
       const data = {
         topRated,
         worstRated,
