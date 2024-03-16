@@ -16,8 +16,7 @@ import InstitutionCard from '../components/InstitutionCard/InstitutionCard'
 const ComplaintPage = () => {
     
       const renderedList = data.map( institution => 
-
-        <InstitutionCard key={institution.institutinId} name = {institution.institutinName}/>
+        <InstitutionCard id={institution.institutinId} name = {institution.institutinName}/>
         );
        
   return (

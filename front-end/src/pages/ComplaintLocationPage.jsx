@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from '../components/Navbar/Nabvar'
 import BreadcrumsStart from '../components/BreadCrums/BreadcrumsStart'
 import Map from '../components/Map/Map'
+import {useLocation} from "react-router-dom" 
+import { useParams } from 'react-router-dom';
 
 const listLocations = [{
     locationName: "Geo Milev",
@@ -18,6 +20,8 @@ const listLocations = [{
 
 
 const ComplaintLocationPage = ({institution}) => {
+    const { id } = useParams(); 
+
     
     const renderedLocations = listLocations.map(location => 
             <li className='flex' key={location.locationId}>
@@ -32,6 +36,8 @@ const ComplaintLocationPage = ({institution}) => {
         <Navbar />
 
         <BreadcrumsStart step={2}/>
+
+        <p>{id}</p>
     
         <main className='flex flex-row'>
             <div className='w-1/3'>
