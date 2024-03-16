@@ -15,7 +15,7 @@ const ComplaintForm = () => {
 
     const [formData, setFormData] = useState({
         "time": "2023-08-12T20:17:46.384Z",
-        "user": "3",
+        "user": "3", 
         "complaints":{
             "speed": 5,
             "politeness": 2,
@@ -24,21 +24,21 @@ const ComplaintForm = () => {
             "accessability": 10,
             "pricing":10
         },
-        "officeId": 3,
-        "institutionId": 1,
+        "officeId": 3, 
+        "institutionId": 1, 
         "serviceType": "taxes",   
-        "clerk": "Ivana",
+        "clerk": "Ivana", 
         "comment": "Rude",
         "media": []
         });
 
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setFormData({
-    //       ...formData,
-    //       [name]: value
-    //     });
-    //   };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+          ...formData,
+          [name]: value
+        });
+      };
 
       const handleSubmit = async () => {
     
@@ -73,44 +73,38 @@ const ComplaintForm = () => {
             <div className='space-y-3'>
                 <label className="input input-bordered flex items-center gap-2">
                 Date
-                <DatePicker />
+                <DatePicker  onChange={(date) => setFormData({...formData, date})} />
                 </label>
 
                 <label className="input input-bordered flex items-center gap-2">
                 Service 
-                <input type="text" className="grow" placeholder="..." />
+                <input type="text"name='serviceType' className="grow" placeholder="..." onChange={handleChange}/>
                 </label>
 
                 <label className="input input-bordered flex items-center gap-2">
                 Clerk 
-                <input type="text" className="grow" placeholder="Name, ID, ..." />
+                <input type="text" name='clerk' className="grow" placeholder="Name, ID, ..." onChange={handleChange}/>
                 </label>
 
-                <label className="input input-bordered flex items-center gap-2">
-                Conplaint type
                     <SelectorOptions options={["speed" , "politeness", "precision", "tech", "accessability", "pricing"]}/>
-                </label>
                 
-                <label className="rating rating-sm flex items-center pl-4 gap-3">
-                    Rate <Rating />
-                </label>
             </div>
 
             <div className='space-y-3'>
                 <label className="input input-bordered flex items-center gap-2">
                 Your Name 
-                <input type="text" className="grow" placeholder="Ivan Ivanov" />
+                <input type="text" className="grow" placeholder="Ivan Ivanov" onChange={handleChange}/>
                 </label>
                 <label className="input input-bordered flex items-center gap-2">
                 Email
-                <input type="text" className="grow" placeholder="ivan.ivanov@gmail.com" />
+                <input type="text" className="grow" placeholder="ivan.ivanov@gmail.com" onChange={handleChange}/>
                 </label>
 
                 <label className="form-control">
                 <div className="label">
                     <span className="label-text">Your complaint</span>
                 </div>
-                <textarea className="textarea textarea-bordered h-24" placeholder="Text" ></textarea>
+                <textarea name='comment' className="textarea textarea-bordered h-24" placeholder="Text" onChange={handleChange}></textarea>
                 </label>
             </div>
 
