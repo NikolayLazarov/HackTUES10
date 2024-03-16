@@ -84,12 +84,12 @@ const ComplaintForm = () => {
                 <input type="text" name='clerk' className="grow" placeholder="Name, ID, ..." onChange={handleChange}/>
                 </label>
                 <ul className="u select-bordered w-80">
-                    speed <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,speed:event.target.value}})} value={formData.complaints.speed} class="range range-primary" />
-                    politeness <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,politeness:event.target.value}})} value={formData.complaints.politeness} class="range range-primary" />
-                    precision <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,precision:event.target.value}})} value={formData.complaints.precision} class="range range-primary" />
-                    tech <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,tech:event.target.value}})} value={formData.complaints.tech} class="range range-primary" />
-                    accessability <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,accessability:event.target.value}})} value={formData.complaints.accessability} class="range range-primary" />
-                    pricing <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,pricing:event.target.value}})} value={formData.complaints.pricing} class="range range-primary" />
+                    speed <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,speed:parseInt(event.target.value)}})} value={formData.complaints.speed} class="range range-primary" />
+                    politeness <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,politeness:parseInt(event.target.value)}})} value={formData.complaints.politeness} class="range range-primary" />
+                    precision <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,precision:parseInt(event.target.value)}})} value={formData.complaints.precision} class="range range-primary" />
+                    tech <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,tech:parseInt(event.target.value)}})} value={formData.complaints.tech} class="range range-primary" />
+                    accessability <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,accessability:parseInt(event.target.value)}})} value={formData.complaints.accessability} class="range range-primary" />
+                    pricing <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,pricing:parseInt(event.target.value)}})} value={formData.complaints.pricing} class="range range-primary" />
                 </ul>
             </div>
 
