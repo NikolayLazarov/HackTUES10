@@ -21,16 +21,6 @@ const ComplaintForm = () => {
                 Date
                 <DatePicker />
                 </label>
-                
-                <label className="input input-bordered flex items-center gap-2">
-                Conplaint type
-                    <SelectorOptions options={["speed" , "politeness", "precision", "tech", "accessability", "pricing"]}/>
-                </label>
-
-                <label className='box box-border '>
-                <p>Rate</p>        <Rating />
-
-                </label>
 
                 <label className="input input-bordered flex items-center gap-2">
                 Service 
@@ -40,6 +30,15 @@ const ComplaintForm = () => {
                 <label className="input input-bordered flex items-center gap-2">
                 Clerk 
                 <input type="text" className="grow" placeholder="Name, ID, ..." />
+                </label>
+
+                <label className="input input-bordered flex items-center gap-2">
+                Conplaint type
+                    <SelectorOptions options={["speed" , "politeness", "precision", "tech", "accessability", "pricing"]}/>
+                </label>
+                
+                <label className="rating rating-sm flex items-center pl-4 gap-3">
+                    Rate <Rating />
                 </label>
             </div>
 
