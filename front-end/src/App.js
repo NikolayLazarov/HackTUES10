@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <ComplaintPage />,
     errorElement: <ErrorPage />
   },{
-    path: "/complaint-location",
+    path: "/complaint-location/:id",
     element: <ComplaintLocationPage />,
     errorElement: <ErrorPage />
   },{

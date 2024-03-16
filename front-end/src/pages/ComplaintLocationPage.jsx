@@ -2,44 +2,50 @@ import React from 'react'
 import Navbar from '../components/Navbar/Nabvar'
 import BreadcrumsStart from '../components/BreadCrums/BreadcrumsStart'
 import Map from '../components/Map/Map'
+import {useLocation} from "react-router-dom" 
+import { useParams } from 'react-router-dom';
 
 const listLocations = [{
-    locationName: "location1",
+    locationName: "Geo Milev",
     locationId: 1
     },{
-        locationName: "location2",
+        locationName: "G.M. Dimitrov",
         locationId: 2
     },{
-        locationName: "location3",
+        locationName: "Nadezdha",
         locationId: 3
     }
 
 ]
 
 
-const ComplaintLocationPage = () => {
+const ComplaintLocationPage = ({institution}) => {
+    const { id } = useParams(); 
+
     
     const renderedLocations = listLocations.map(location => 
-            <li className='flex' key={location.locationId}>
-                <a href='/complaint-form' className='btn btn-neutral btn-wide
+            <div  key={location.locationId}>
+                <a href='/complaint-form' className='btn btn-wide
     '>{location.locationName} </a>
             
-            </li>
+            </div>
         )
 
     return (
     <>
         <Navbar />
 
-        <BreadcrumsStart page=""/>
+        <BreadcrumsStart step={2}/>
 
-        <main className='flex flex-row'>
-            <div className='w-1/3'>
+        <p>{id}</p>
+    
+        <main className='mx-10 grid grid-cols-3'>
+            <div className='col-span-1'>
                 {renderedLocations}
-
             </div>
-
-            <Map width="" height= "" />
+            <div className='col-span-2'>
+                <Map />
+            </div>
         </main>
 
 

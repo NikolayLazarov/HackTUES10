@@ -3,21 +3,21 @@ import {Line} from "react-chartjs-2"
 import Chart from 'chart.js/auto';
 
 
-const GraphicEmelement = ({mostRelevant}) => {
+const GraphicEmelement = ({graphData}) => {
+  const colors = ['red','green','blue', 'purple','orange','black']
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], /*to take the avarage of every person */
-    datasets: [
+    labels: graphData ? [...Array(Object.values(graphData)[0].length).keys()] : [],
+    datasets: graphData ? Object.entries(graphData).map(([k,data],i)=>(
       {
-        label: 'Sample Data',
+        label: k,
         backgroundColor: 'rgba(75,192,192,1)',
         // borderColor: 'rgba(0,10,0,1)',
-        borderColor: "red",
-        borderWidth: 5,
-        data: mostRelevant,
-      },
-    ],
-  };
-  
+        borderColor: colors[i%colors.length],
+        borderWidth: 2,
+        data: data,
+      }))
+    :[]
+  }
   return (
 <div>
       <Line
