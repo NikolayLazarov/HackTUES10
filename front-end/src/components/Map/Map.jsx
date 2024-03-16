@@ -3,7 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 
 
 const Map = ({width, height}) => {
-  const position = [51.505, -0.09]
   const [offices,setOffices] = useState([])
   useEffect(()=>{
     fetch('http://172.233.40.193:3001/complaints/offices/1').then(r=>r.json()).then(({data})=>setOffices(data))
@@ -22,7 +21,7 @@ const Map = ({width, height}) => {
           offices ? offices.map(({location:{lat,long},contacts})=>(
             <Marker position={[lat, long]}>
             <Popup>
-             {contacts.email} <br /> {contacts.phone}
+             {contacts.email} <br /> {contacts.phone} <br /><a href='/complaint-form'> Give feedback </a>
             </Popup>
           </Marker>
           )) : <></>

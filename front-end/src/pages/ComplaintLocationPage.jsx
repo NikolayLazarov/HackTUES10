@@ -24,11 +24,11 @@ const ComplaintLocationPage = ({institution}) => {
 
     
     const renderedLocations = listLocations.map(location => 
-            <li className='flex' key={location.locationId}>
+            <div  key={location.locationId}>
                 <a href='/complaint-form' className='btn btn-wide
     '>{location.locationName} </a>
             
-            </li>
+            </div>
         )
 
     return (
@@ -39,12 +39,13 @@ const ComplaintLocationPage = ({institution}) => {
 
         <p>{id}</p>
     
-        <main className='flex flex-row'>
-            <div className='w-1/3'>
+        <main className='mx-10 grid grid-cols-3'>
+            <div className='col-span-1'>
                 {renderedLocations}
             </div>
-
-            <Map width="" height= "" />
+            <div className='col-span-2'>
+                <Map />
+            </div>
         </main>
 
 
