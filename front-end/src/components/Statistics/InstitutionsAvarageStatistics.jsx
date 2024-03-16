@@ -2,7 +2,7 @@ import React from 'react'
 import GraphicEmelement from '../GraphicsElement/GraphicEmelement'
 
 const InstitutionsAvarageStatistics = ({graphData}) => {
-  return (
+    return (
         <>
             <GraphicEmelement graphData={graphData}  />
         </>

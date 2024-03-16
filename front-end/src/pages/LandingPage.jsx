@@ -20,7 +20,6 @@ const LandingPage = () => {
       setGeneralStats(data)
     })
   },[])
-  console.log({generalStats})
   return (
     <>
         <nav>
@@ -48,7 +47,7 @@ const LandingPage = () => {
               <Dividor />
               <div>
                 <section className=' flex flex-col basis-1/4'>
-                  <BestGrowth graphData={generalStats && generalStats.bestGrowing.chartData}/>
+                  <BestGrowth institutionName={generalStats && generalStats.bestGrowing.institution.name} graphData={generalStats && generalStats.bestGrowing.chartData}/>
                 </section>
               </div>
 
