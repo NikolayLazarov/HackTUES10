@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import Rating from './Rating';
 
 
 const SelectorOptions = () => {
@@ -7,18 +8,15 @@ const SelectorOptions = () => {
 const [pickedOption,setOption] = useState("");
 
     return (    
-    <label className="form-control w-full max-w-xs">
-  <select className="select select-bordered">
-    <option disabled selected>Pick one</option>
-    <option onClick={()=> {setOption("speed")} }>speed</option>
-    <option onCLick={()=>{setOption("politeness")} }>politeness</option>
-    <option onCLick={()=>{setOption("precision")}}>precision</option>
-    <option onCLick={()=>{setOption("tech")}}>tech</option>
-    <option onCLick={()=>{setOption("accessability")}}>accessability</option>
-    <option onCLick={()=>{setOption("pricing")}}>pricing</option>
+  <ul className="u select-bordered">
+    <li >speed <Rating/> </li>
+    <li >politeness <Rating/> </li>
+    <li >precision <Rating/> </li>
+    <li >tech <Rating/> </li>
+    <li >accessability <Rating/></li>
+    <li >pricing <Rating/> </li>
 
-  </select>
-</label>
+  </ul>
   )
 }
 
