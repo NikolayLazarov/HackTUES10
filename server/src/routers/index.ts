@@ -80,7 +80,7 @@ async function institutionSummary(req:any,res:any){
         pricing: []
     },
     institutionId,
-    institututionName: institution.name
+    institutionName: institution.name
   }
   complaints.forEach((c: Complaint) => 
     Object.keys(data.historicalRating).forEach((t)=>data.historicalRating[t].push(c.complaints[t as ComplaintType]))
