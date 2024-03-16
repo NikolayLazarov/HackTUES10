@@ -7,6 +7,7 @@ const Map = ({width, height}) => {
   const [offices,setOffices] = useState([])
   useEffect(()=>{
     fetch('http://172.233.40.193:3001/complaints/offices/1').then(r=>r.json()).then(({data})=>setOffices(data))
+
   },[])
   return (
     <div id='map' className='max-h-96 '>

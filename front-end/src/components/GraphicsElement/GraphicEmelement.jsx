@@ -4,7 +4,7 @@ import Chart from 'chart.js/auto';
 
 
 const GraphicEmelement = ({graphData}) => {
-  const colors = ['red','green','blue', 'purple']
+  const colors = ['red','green','blue', 'purple','orange','black']
   const data = {
     labels: graphData ? [...Array(Object.values(graphData)[0].length).keys()] : [],
     datasets: graphData ? Object.entries(graphData).map(([k,data],i)=>(
