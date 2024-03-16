@@ -163,7 +163,7 @@ async function globalStats(req:any,res:any) {
       bestGrowing  = {
         chartData: complaints.filter(({institutionId}:any)=> institutionId === parseInt(bestGrowing[0])).map(({complaints}:any)=>average(Object.values(complaints))),
         institutionId: bestGrowing[0],
-        name: institutions.find((({ _id }: any)=> _id ==bestGrowing[0]))
+        institution: institutions.find((({ _id }: any)=> _id ==bestGrowing[0]))
       }
 
       let topRated:any = Object.entries(averages).reduce((a,b)=>a[1]>b[1] ? a : b, ['',Number.MIN_SAFE_INTEGER] )
