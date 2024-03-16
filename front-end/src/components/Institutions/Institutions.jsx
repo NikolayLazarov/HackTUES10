@@ -40,7 +40,7 @@ const Institutions = ({institutionId}) => {
         <h3>{institution.institututionName}</h3>
         {/* <InputRange currentValue={institution.averages[institution.mostRelevant]} /> */}
         <p>{institution.mostRelevant}</p>
-        <BestGrowth graphData={institution.historicalRating[institution.mostRelevant]}/>
+        <BestGrowth institutionName={institution.institutionName} graphData={institution.historicalRating[institution.mostRelevant]}/>
 
     </a>
         </li>
