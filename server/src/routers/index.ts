@@ -69,7 +69,7 @@ async function institutionSummary(req:any,res:any){
     return
   }
   const complaints = await getDb().collection('complaints').find({institutionId}).sort({time:1}).toArray()
-
+  const institution = await getDb().collection('institutions').findOne({_id: institutionId})
   let data:any = {
     historicalRating: {
         speed: [],
@@ -80,7 +80,7 @@ async function institutionSummary(req:any,res:any){
         pricing: []
     },
     institutionId,
-    institututionName: "PLACEHOLDER"
+    institututionName: institution.name
   }
   complaints.forEach((c: Complaint) => 
     Object.keys(data.historicalRating).forEach((t)=>data.historicalRating[t].push(c.complaints[t as ComplaintType]))
