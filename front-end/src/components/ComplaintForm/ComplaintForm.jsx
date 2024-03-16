@@ -4,7 +4,6 @@ import 'react-calendar/dist/Calendar.css';
 import 'react-clock/dist/Clock.css';
 // import {Datepicker} from "react-datetime-picker"
 import DatePicker from '../DatePicker/DatePicker'
-import SelectorOptions from '../SelectorOptions/SelectorOptions';
 import Rating from '../SelectorOptions/Rating';
 import {useNavigate} from "react-router-dom"
 import { useState } from 'react';
@@ -12,17 +11,16 @@ import { useState } from 'react';
 
 const ComplaintForm = () => {
     const navigate = useNavigate();
-
-    const [formData, setFormData] = useState({
+    let [formData,setFormData] = useState({
         "time": "2023-08-12T20:17:46.384Z",
         "user": "3", 
         "complaints":{
-            "speed": 5,
-            "politeness": 2,
-            "precision": 10,
-            "tech":10,
-            "accessability": 10,
-            "pricing":10
+            "speed": 0,
+            "politeness": 0,
+            "precision": 0,
+            "tech":0,
+            "accessability": 0,
+            "pricing":0
         },
         "officeId": 3, 
         "institutionId": 1, 
@@ -30,7 +28,7 @@ const ComplaintForm = () => {
         "clerk": "Ivana", 
         "comment": "Rude",
         "media": []
-        });
+        })
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -73,7 +71,7 @@ const ComplaintForm = () => {
             <div className='space-y-3'>
                 <label className="input input-bordered flex items-center gap-2">
                 Date
-                <DatePicker  onChange={(date) => setFormData({...formData, date})} />
+                <DatePicker  onChange={(date) => setFormData(({...formData, date}))} />
                 </label>
 
                 <label className="input input-bordered flex items-center gap-2">
@@ -85,9 +83,14 @@ const ComplaintForm = () => {
                 Clerk 
                 <input type="text" name='clerk' className="grow" placeholder="Name, ID, ..." onChange={handleChange}/>
                 </label>
-
-                    <SelectorOptions options={["speed" , "politeness", "precision", "tech", "accessability", "pricing"]}/>
-                
+                <ul className="u select-bordered w-80">
+                    speed <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,speed:event.target.value}})} value={formData.complaints.speed} class="range range-primary" />
+                    politeness <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,politeness:event.target.value}})} value={formData.complaints.politeness} class="range range-primary" />
+                    precision <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,precision:event.target.value}})} value={formData.complaints.precision} class="range range-primary" />
+                    tech <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,tech:event.target.value}})} value={formData.complaints.tech} class="range range-primary" />
+                    accessability <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,accessability:event.target.value}})} value={formData.complaints.accessability} class="range range-primary" />
+                    pricing <input type="range" min="0" max="10" onChange={(event)=>setFormData({...formData,complaints:{...formData.complaints,pricing:event.target.value}})} value={formData.complaints.pricing} class="range range-primary" />
+                </ul>
             </div>
 
             <div className='space-y-3'>
